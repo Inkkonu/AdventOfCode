@@ -1,9 +1,18 @@
 def p1(data):
-    return None
+    d = dict()
+    for i in range(1,27):
+        d[chr(ord('a')-1+i)] = i
+        d[chr(ord('A') - 1 + i)] = i + 26
+
+    return sum([d[c.pop()] for c in [set(line[:len(line)//2]).intersection(set(line[len(line)//2:])) for line in data]])
 
 
 def p2(data):
-    return None
+    d = dict()
+    for i in range(1, 27):
+        d[chr(ord('a') - 1 + i)] = i
+        d[chr(ord('A') - 1 + i)] = i + 26
+    return sum([d[c.pop()] for c in [set(data[i]).intersection(set(data[i+1]), set(data[i+2])) for i in range(0, len(data), 3)]])
 
 
 if __name__ == '__main__':
