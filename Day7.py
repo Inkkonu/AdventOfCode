@@ -1,15 +1,9 @@
 def p1(data):
-    i = 0
-    while len(set(data[0][i:i+4])) != 4:
-        i += 1
-    return i+4
+    return None
 
 
 def p2(data):
-    i = 0
-    while len(set(data[0][i:i + 14])) != 14:
-        i += 1
-    return i + 14
+    return None
 
 
 if __name__ == '__main__':
