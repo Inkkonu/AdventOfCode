@@ -30,5 +30,5 @@ if __name__ == '__main__':
               8: 'BDZ', 9: 'MNZW'}
     print(f'Part 1 : {p1(data, stacks)}')
     stacks = {1: 'VCDRZGBW', 2: 'GWFCBSTV', 3: 'CBSNW', 4: 'QGMNJVCP', 5: 'TSLFDHB', 6: 'JVTWMN', 7: 'PFLCSTG',
-              8: 'BDZ', 9: 'MNZW'} # Fuck you Python
+              8: 'BDZ', 9: 'MNZW'}  # Fuck you Python
     print(f'Part 2 : {p2(data, stacks)}')

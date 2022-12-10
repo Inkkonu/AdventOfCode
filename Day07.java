@@ -67,7 +67,7 @@ class MyDirectory extends DirectoryContent {
         return total;
     }
 
-    public MyDirectory getParent(){
+    public MyDirectory getParent() {
         return this.parent;
     }
 
@@ -85,31 +85,27 @@ class MyDirectory extends DirectoryContent {
     }
 }
 
-public class Day7 {
+public class Day07 {
 
-    public static int p1(List<String> data){
+    public static int p1(List<String> data) {
         MyDirectory root = new MyDirectory("/", null);
         MyDirectory current_repo = root;
-        for(String line : data.subList(1, data.size())){
+        for (String line : data.subList(1, data.size())) {
             String[] parts = line.split(" ");
-            if(parts[0].equals("$")){
-                if(parts[1].equals("ls")){
+            if (parts[0].equals("$")) {
+                if (parts[1].equals("ls")) {
                     ;
-                }
-                else{
-                    if(parts[2].equals("..")){
+                } else {
+                    if (parts[2].equals("..")) {
                         current_repo = current_repo.getParent();
-                    }
-                    else{
+                    } else {
                         current_repo = current_repo.findChild(parts[2]);
                     }
                 }
-            }
-            else{
-                if(parts[0].equals("dir")){
+            } else {
+                if (parts[0].equals("dir")) {
                     current_repo.addElement(new MyDirectory(parts[1], current_repo));
-                }
-                else{
+                } else {
                     current_repo.addElement(new MyFile(parts[1], Integer.parseInt(parts[0])));
                 }
             }
@@ -117,33 +113,29 @@ public class Day7 {
         return root.sumFileUnder(100000);
     }
 
-    public static int p2(List<String> data){
+    public static int p2(List<String> data) {
         MyDirectory root = new MyDirectory("/", null);
         List<MyDirectory> allDirectories = new ArrayList<>();
         allDirectories.add(root);
         MyDirectory current_repo = root;
-        for(String line : data.subList(1, data.size())){
+        for (String line : data.subList(1, data.size())) {
             String[] parts = line.split(" ");
-            if(parts[0].equals("$")){
-                if(parts[1].equals("ls")){
+            if (parts[0].equals("$")) {
+                if (parts[1].equals("ls")) {
                     ;
-                }
-                else{
-                    if(parts[2].equals("..")){
+                } else {
+                    if (parts[2].equals("..")) {
                         current_repo = current_repo.getParent();
-                    }
-                    else{
+                    } else {
                         current_repo = current_repo.findChild(parts[2]);
                     }
                 }
-            }
-            else{
-                if(parts[0].equals("dir")){
+            } else {
+                if (parts[0].equals("dir")) {
                     MyDirectory d = new MyDirectory(parts[1], current_repo);
                     current_repo.addElement(d);
                     allDirectories.add(d);
-                }
-                else{
+                } else {
                     current_repo.addElement(new MyFile(parts[1], Integer.parseInt(parts[0])));
                 }
             }
@@ -153,8 +145,8 @@ public class Day7 {
         int currentFreeSpace = fullSize - root.getSize();
         List<MyDirectory> bigEnough = allDirectories.stream().filter(d -> d.getSize() >= freeSpaceNeeded - currentFreeSpace).toList();
         MyDirectory smallest = bigEnough.get(0);
-        for(MyDirectory d : bigEnough){
-            if(d.getSize() <= smallest.getSize()){
+        for (MyDirectory d : bigEnough) {
+            if (d.getSize() <= smallest.getSize()) {
                 smallest = d;
             }
         }

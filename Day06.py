@@ -1,8 +1,8 @@
 def p1(data):
     i = 0
-    while len(set(data[0][i:i+4])) != 4:
+    while len(set(data[0][i:i + 4])) != 4:
         i += 1
-    return i+4
+    return i + 4
 
 
 def p2(data):

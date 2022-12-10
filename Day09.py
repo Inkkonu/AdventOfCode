@@ -49,8 +49,9 @@ def p1(data):
             seen.add((xTail, yTail))
     return len(seen)
 
+
 def p2(data):
-    tails = [(0,0),(0,0),(0,0),(0,0),(0,0),(0,0),(0,0),(0,0),(0,0)]
+    tails = [(0, 0), (0, 0), (0, 0), (0, 0), (0, 0), (0, 0), (0, 0), (0, 0), (0, 0)]
     xTail, yTail = tails[0]
     xHead, yHead = 0, 0
     seen = {(xTail, yTail)}
@@ -101,7 +102,7 @@ def p2(data):
             tails[0] = (xTail, yTail)
 
             for i in range(1, len(tails)):
-                xHeadTemp, yHeadTemp, xTailTemp, yTailTemp = tails[i-1][0], tails[i-1][1], tails[i][0], tails[i][1]
+                xHeadTemp, yHeadTemp, xTailTemp, yTailTemp = tails[i - 1][0], tails[i - 1][1], tails[i][0], tails[i][1]
                 if xHeadTemp == xTailTemp + 2 and yHeadTemp == yTailTemp:
                     xTailTemp += 1
                 elif xHeadTemp == xTailTemp - 2 and yHeadTemp == yTailTemp:
@@ -134,10 +135,10 @@ def p2(data):
                 elif xHeadTemp == xTailTemp - 2 and yHeadTemp == yTailTemp + 1:
                     xTailTemp -= 1
                     yTailTemp += 1
-                elif xHeadTemp == xTailTemp + 2 and yHeadTemp == yTailTemp +2:
+                elif xHeadTemp == xTailTemp + 2 and yHeadTemp == yTailTemp + 2:
                     xTailTemp += 1
                     yTailTemp += 1
-                elif xHeadTemp == xTailTemp + 2 and yHeadTemp == yTailTemp -2:
+                elif xHeadTemp == xTailTemp + 2 and yHeadTemp == yTailTemp - 2:
                     xTailTemp += 1
                     yTailTemp -= 1
                 elif xHeadTemp == xTailTemp - 2 and yHeadTemp == yTailTemp + 2:
