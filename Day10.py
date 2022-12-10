@@ -19,7 +19,7 @@ def p1(data):
 
 
 def p2(data):
-    crt = [['.' for _ in range(40)] for _ in range(6)]
+    crt = [[' ' for _ in range(40)] for _ in range(6)]
     cycle = x = 1
     for line in data:
         if line == 'noop':
