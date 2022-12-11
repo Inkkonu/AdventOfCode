@@ -1,4 +1,4 @@
 .idea/
 */input.txt
-*/*.iml
-*/out/
+*.iml
+out/

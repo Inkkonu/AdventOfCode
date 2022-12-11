@@ -1,3 +1,5 @@
+package aoc2022;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
@@ -155,7 +157,7 @@ public class Day07 {
 
     public static void main(String[] args) throws FileNotFoundException {
         List<String> data = new ArrayList<>();
-        Scanner scanner = new Scanner(new File("input.txt"));
+        Scanner scanner = new Scanner(new File("aoc2022/input.txt"));
         while (scanner.hasNextLine()) {
             data.add(scanner.nextLine());
         }
