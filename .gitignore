@@ -3,3 +3,4 @@
 *.iml
 out/
 template.py
+/Output/
