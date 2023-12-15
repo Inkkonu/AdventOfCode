@@ -19,7 +19,7 @@ def hash(s):
     return t
 
 
-def p2(data):
+def p2(data): # I learned after submitting that dictionaries are ordered since Python 3.7
     l = [[] for _ in range(256)]
     for elem in data:
         if elem[-1] == '-':
