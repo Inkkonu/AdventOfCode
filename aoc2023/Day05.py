@@ -1,3 +1,6 @@
+import plotly.graph_objects as go
+
+
 def p1(data):
     def fill_dictionaries(i):
         d = {}
@@ -28,10 +31,31 @@ def p1(data):
     ds = [seed_to_soil, soil_to_fertilizer, fertilizer_to_water, water_to_light, light_to_temperature,
           temperature_to_humidity, humidity_to_location]
     locations = []
+
+    viz_data = []
+
     for seed in seeds:
+        l = [seed]
         for j in range(len(ds)):
             seed = getValue(seed, ds[j])
+            l.append(seed)
         locations.append(seed)
+        viz_data.append(l)
+
+    fig = go.Figure(data=go.Parcoords(
+        dimensions=list([
+            dict(label='Seed', values=[l[0] for l in viz_data]),
+            dict(label='Soil', values=[l[1] for l in viz_data]),
+            dict(label='Fertilizer', values=[l[2] for l in viz_data]),
+            dict(label='Water', values=[l[3] for l in viz_data]),
+            dict(label='Light', values=[l[4] for l in viz_data]),
+            dict(label='Temperature', values=[l[5] for l in viz_data]),
+            dict(label='Humidity', values=[l[6] for l in viz_data]),
+            dict(label='Location', values=[l[7] for l in viz_data])
+        ])
+    ))
+
+    fig.show()
 
     return min(locations)
 
@@ -56,7 +80,7 @@ def p2(data):
     seeds = []
     line = [int(x) for x in data[0].split(':')[1].split()]
     for i in range(0, len(line), 2):
-        seeds.append((line[i], line[i] + line[i+1]))
+        seeds.append((line[i], line[i] + line[i + 1]))
 
     i = 3
     seed_to_soil, i = fill_dictionaries(i)
