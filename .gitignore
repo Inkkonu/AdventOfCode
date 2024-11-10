@@ -1,0 +1,6 @@
+.idea/
+*/input.txt
+*.iml
+out/
+template.py
+/Output/
