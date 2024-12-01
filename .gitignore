@@ -1,5 +1,5 @@
 .idea/
-*/input.txt
+*.txt
 *.iml
 out/
 template.py
