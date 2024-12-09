@@ -1,4 +1,5 @@
 def p1(data):
+    # Basic two pointers approach
     disk = createDisk(data)
     freeSpaceIndex = disk.index(".")
     fileIndex = len(disk)-1
@@ -43,14 +44,17 @@ def p2(data):
         disk.append(files[i])
         disk.append(freeSpace[i])
     disk.append(files[-1])
+    # Disk looks like : [(0,2), (".", 3), (1, 3), (".", 3)...]
 
     for elem in files[::-1]:
-
+        # For each file, starting from the last
         size = elem[1]
         for i, t in enumerate(disk):
+            # Find free space that's big enough
             if t[0] == "." and t[1] >= size:
                 disk[i] = (t[0], t[1]-size)
                 disk.insert(i, elem)
+                # Then replace the file with free space
                 for j in range(len(disk)-1, 0, -1):
                     if elem == disk[j]:
                         disk[j] = (".", size)
