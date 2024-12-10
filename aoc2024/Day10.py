@@ -27,8 +27,7 @@ def recurp2(data, x, y, path=set()):
     paths = list()
     if data[x][y] == 9:
         path.add((x, y))
-        if path not in paths:
-            paths.append(path)
+        paths.append(path)
     else:
         directions = [(1, 0), (-1, 0), (0, 1), (0, -1)]
         for dx, dy in directions:
