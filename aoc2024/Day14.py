@@ -109,5 +109,5 @@ def isTree(positions, width, height):
 if __name__ == '__main__':
     with open('input.txt', 'r') as f:
         data = [line.strip() for line in f.readlines()]
-    print(f'Part 1 : {p1(data)}')  # 1.26 second
-    print(f'Part 2 : {p2(data)}')  # 1.20 second
+    print(f'Part 1 : {p1(data)}')
+    print(f'Part 2 : {p2(data)}')
