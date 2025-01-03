@@ -37,4 +37,4 @@ if __name__ == "__main__":
         data = [int(line.strip()) for line in f.readlines()[0].split(",")]
     start = time.time()
     print(f"Part 2 : {p2(data)}")
-    print(f"Time for part 2 : {time.time() - start}s")  # 45.57 μs
+    print(f"Time for part 2 : {time.time() - start}s")  # 45.57 ms
