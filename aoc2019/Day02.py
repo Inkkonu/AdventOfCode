@@ -1,3 +1,6 @@
+import time
+
+
 def p1(data, replace=True):
     i = 0
     if replace:
@@ -24,10 +27,14 @@ def p2(data):
                 return 100 * i + j
 
 
-if __name__ == '__main__':
-    with open('input.txt', 'r') as f:
-        data = [int(line.strip()) for line in f.readlines()[0].split(',')]
-    print(f'Part 1 : {p1(data)}')
-    with open('input.txt', 'r') as f:
-        data = [int(line.strip()) for line in f.readlines()[0].split(',')]
-    print(f'Part 2 : {p2(data)}')
+if __name__ == "__main__":
+    with open("input.txt", "r") as f:
+        data = [int(line.strip()) for line in f.readlines()[0].split(",")]
+    start = time.time()
+    print(f"Part 1 : {p1(data)}")
+    print(f"Time for part 1 : {time.time() - start}s")  # 133.51 μs
+    with open("input.txt", "r") as f:
+        data = [int(line.strip()) for line in f.readlines()[0].split(",")]
+    start = time.time()
+    print(f"Part 2 : {p2(data)}")
+    print(f"Time for part 2 : {time.time() - start}s")  # 45.57 μs
