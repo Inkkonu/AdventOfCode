@@ -1,6 +1,6 @@
-from collections import defaultdict
 import re
 import time
+from collections import defaultdict
 from itertools import count
 
 
@@ -16,16 +16,16 @@ def p1(data):
     first = second = third = fourth = 0
     for (x, y), count in positions.items():
         if 0 <= x < width // 2:
-            if 0 <= y < height//2:
+            if 0 <= y < height // 2:
                 first += count
             elif y > height // 2:
                 third += count
-        elif x > width//2:
-            if 0 <= y < height//2:
+        elif x > width // 2:
+            if 0 <= y < height // 2:
                 second += count
             elif y > height // 2:
                 fourth += count
-    return first*second*third*fourth
+    return first * second * third * fourth
 
 
 def p2(data):
@@ -54,7 +54,7 @@ def p2(data):
     *        *************        *
     *       ***************       *
     *      *****************      *
-    *        *************        *        
+    *        *************        *
     *       ***************       *
     *      *****************      *
     *     *******************     *
@@ -75,27 +75,28 @@ def p2(data):
         if match := re.match(r"p=(-?\d+),(-?\d+) v=(-?\d+),(-?\d+)", line):
             pX, pY, vX, vY = map(int, match.groups())
             robots.append([pX, pY, vX, vY])
-    for i in count(start=1):
+    for iteration in count(start=1):
         for robot in robots:
             robot[0] = (robot[0] + robot[2]) % width
             robot[1] = (robot[1] + robot[3]) % height
-        isTree({(r[0], r[1]) for r in robots}, width, height)
+        isTree({(r[0], r[1]) for r in robots}, width, height, iteration)
     return 0
 
 
-def isTree(positions, width, height):
-    for (x, y) in positions:
+def isTree(positions, width, height, iteration):
+    for x, y in positions:
         lineLength = 1
         i = 0
-        while (x-i, y) in positions:
+        while (x - i, y) in positions:
             lineLength += 1
             i += 1
         i = 0
-        while (x+i, y) in positions:
+        while (x + i, y) in positions:
             lineLength += 1
             i += 1
 
         if lineLength > 20:
+            print(iteration)
             for y in range(height):
                 for x in range(width):
                     if (x, y) in positions:
@@ -106,8 +107,12 @@ def isTree(positions, width, height):
             time.sleep(3)  # To make sure I can see it
 
 
-if __name__ == '__main__':
-    with open('input.txt', 'r') as f:
+if __name__ == "__main__":
+    with open("input.txt", "r") as f:
         data = [line.strip() for line in f.readlines()]
-    print(f'Part 1 : {p1(data)}')
-    print(f'Part 2 : {p2(data)}')
+    start = time.time()
+    print(f"Part 1 : {p1(data)}")
+    print(f"Time for part 1 : {time.time() - start}s")  # 1.02 ms
+    start = time.time()
+    print(f"Part 2 : {p2(data)}")
+    print(f"Time for part 2 : {time.time() - start}s")  # Around a second

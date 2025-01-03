@@ -1,3 +1,6 @@
+import time
+
+
 def p1(grid, movements):
     robotX, robotY = 0, 0
     for x, line in enumerate(grid):
@@ -190,5 +193,9 @@ if __name__ == "__main__":
                     grid2.append(list(line))
                 else:
                     movements += list(line)
+    start = time.time()
     print(f"Part 1 : {p1(grid1, movements)}")
+    print(f"Time for part 1 : {time.time() - start}s")  # 3.64 ms
+    start = time.time()
     print(f"Part 2 : {p2(grid2, movements)}")
+    print(f"Time for part 2 : {time.time() - start}s")  # 4.99 ms

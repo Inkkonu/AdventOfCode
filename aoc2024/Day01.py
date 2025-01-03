@@ -1,3 +1,4 @@
+import time
 from collections import Counter
 
 
@@ -14,19 +15,23 @@ def p2(data):
     c = Counter(data[1])
     total = 0
     for n in data[0]:
-        total += n*c[n]
+        total += n * c[n]
     return total
 
 
 if __name__ == "__main__":
     data = []
     l1, l2 = [], []
-    with open('input.txt', 'r') as f:
+    with open("input.txt", "r") as f:
         for line in f.readlines():
             line = line.strip()
             line = line.split()
             l1.append(int(line[0]))
             l2.append(int(line[1]))
     data = [l1, l2]
-    print(f'Part 1 : {p1(data)}')
-    print(f'Part 2 : {p2(data)}')
+    start = time.time()
+    print(f"Part 1 : {p1(data)}")
+    print(f"Time for part 1 : {time.time() - start}s")  # 355.96 μs
+    start = time.time()
+    print(f"Part 2 : {p2(data)}")
+    print(f"Time for part 2 : {time.time() - start}s")  # 274.18 μs

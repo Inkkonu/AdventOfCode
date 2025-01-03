@@ -1,8 +1,11 @@
+import time
+
+
 def p1(data):
     # Basic two pointers approach
     disk = createDisk(data)
     freeSpaceIndex = disk.index(".")
-    fileIndex = len(disk)-1
+    fileIndex = len(disk) - 1
     while abs(freeSpaceIndex - fileIndex) > 1:
         disk[fileIndex], disk[freeSpaceIndex] = disk[freeSpaceIndex], disk[fileIndex]
         fileIndex -= 1
@@ -32,7 +35,7 @@ def createDisk(data):
 def checksum(disk):
     total = 0
     for i, v in enumerate(disk):
-        total += v*i if v != "." else 0
+        total += v * i if v != "." else 0
     return total
 
 
@@ -52,10 +55,10 @@ def p2(data):
         for i, t in enumerate(disk):
             # Find free space that's big enough
             if t[0] == "." and t[1] >= size:
-                disk[i] = (t[0], t[1]-size)
+                disk[i] = (t[0], t[1] - size)
                 disk.insert(i, elem)
                 # Then replace the file with free space
-                for j in range(len(disk)-1, 0, -1):
+                for j in range(len(disk) - 1, 0, -1):
                     if elem == disk[j]:
                         disk[j] = (".", size)
                         break
@@ -68,9 +71,13 @@ def p2(data):
     return checksum(newDisk)
 
 
-if __name__ == '__main__':
-    with open('input.txt', 'r') as f:
+if __name__ == "__main__":
+    with open("input.txt", "r") as f:
         data = [line.strip() for line in f.readlines()]
         data = list(map(int, data[0]))
-    print(f'Part 1 : {p1(data)}')
-    print(f'Part 2 : {p2(data)}')
+    start = time.time()
+    print(f"Part 1 : {p1(data)}")
+    print(f"Time for part 1 : {time.time() - start}s")  # 13.27 ms
+    start = time.time()
+    print(f"Part 2 : {p2(data)}")
+    print(f"Time for part 2 : {time.time() - start}s")  # 7.77 s

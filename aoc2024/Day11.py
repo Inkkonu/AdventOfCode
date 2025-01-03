@@ -1,6 +1,7 @@
+import time
+from collections import Counter
 from functools import cache
 from math import floor, log10
-from collections import Counter
 
 
 def p1(data):
@@ -32,13 +33,16 @@ def blink(n):
     digits = floor(log10(n)) + 1
     if (digits & 1) == 0:  # If the numbers of digits is even
         divisor = 10 ** (digits // 2)
-        return [n//divisor, n % divisor]  # Split the number in half
-    return [n*2024]
+        return [n // divisor, n % divisor]  # Split the number in half
+    return [n * 2024]
 
 
-if __name__ == '__main__':
-    with open('input.txt', 'r') as f:
-        data = [list(map(int, line.strip().split(' ')))
-                for line in f.readlines()][0]
-    print(f'Part 1 : {p1(data)}')  # 0.002 second
-    print(f'Part 2 : {p2(data)}')  # 0.05 second
+if __name__ == "__main__":
+    with open("input.txt", "r") as f:
+        data = [list(map(int, line.strip().split(" "))) for line in f.readlines()][0]
+    start = time.time()
+    print(f"Part 1 : {p1(data)}")
+    print(f"Time for part 1 : {time.time() - start}s")  # 2.50 ms
+    start = time.time()
+    print(f"Part 2 : {p2(data)}")
+    print(f"Time for part 2 : {time.time() - start}s")  # 58.66 ms

@@ -1,4 +1,5 @@
 import re
+import time
 
 
 def p1(data):
@@ -8,7 +9,7 @@ def p1(data):
         for mul in muls:
             mul = mul.split(",")
             x, y = int(mul[0][4:]), int(mul[1][:-1])
-            total += x*y
+            total += x * y
     return total
 
 
@@ -21,13 +22,17 @@ def p2(data):
             for mul in muls:
                 mul = mul.split(",")
                 x, y = int(mul[0][4:]), int(mul[1][:-1])
-                total += x*y
+                total += x * y
     return total
 
 
-if __name__ == '__main__':
-    with open('input.txt', 'r') as f:
+if __name__ == "__main__":
+    with open("input.txt", "r") as f:
         # But you need to change the AoC's input to have it on one line, else it adds undesired do() and don't()
         data = ["do()" + line.strip() + "don't()" for line in f.readlines()]
-    print(f'Part 1 : {p1(data)}')
-    print(f'Part 2 : {p2(data)}')
+    start = time.time()
+    print(f"Part 1 : {p1(data)}")
+    print(f"Time for part 1 : {time.time() - start}s")  # 478.98 μs
+    start = time.time()
+    print(f"Part 2 : {p2(data)}")
+    print(f"Time for part 2 : {time.time() - start}s")  # 349.76 μs
