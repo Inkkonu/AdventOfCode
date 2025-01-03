@@ -1,3 +1,6 @@
+import time
+
+
 def p1(data):
     xTail, yTail = 0, 0
     xHead, yHead = 0, 0
@@ -5,13 +8,13 @@ def p1(data):
     for line in data:
         direction, length = line[0], int(line[2:])
         for i in range(length):
-            if direction == 'R':
+            if direction == "R":
                 xHead += 1
-            elif direction == 'L':
+            elif direction == "L":
                 xHead -= 1
-            elif direction == 'U':
+            elif direction == "U":
                 yHead += 1
-            elif direction == 'D':
+            elif direction == "D":
                 yHead -= 1
 
             if xHead == xTail + 2 and yHead == yTail:
@@ -58,13 +61,13 @@ def p2(data):
     for line in data:
         direction, length = line[0], int(line[2:])
         for i in range(length):
-            if direction == 'R':
+            if direction == "R":
                 xHead += 1
-            elif direction == 'L':
+            elif direction == "L":
                 xHead -= 1
-            elif direction == 'U':
+            elif direction == "U":
                 yHead += 1
-            elif direction == 'D':
+            elif direction == "D":
                 yHead -= 1
 
             if xHead == xTail + 2 and yHead == yTail:
@@ -102,7 +105,12 @@ def p2(data):
             tails[0] = (xTail, yTail)
 
             for i in range(1, len(tails)):
-                xHeadTemp, yHeadTemp, xTailTemp, yTailTemp = tails[i - 1][0], tails[i - 1][1], tails[i][0], tails[i][1]
+                xHeadTemp, yHeadTemp, xTailTemp, yTailTemp = (
+                    tails[i - 1][0],
+                    tails[i - 1][1],
+                    tails[i][0],
+                    tails[i][1],
+                )
                 if xHeadTemp == xTailTemp + 2 and yHeadTemp == yTailTemp:
                     xTailTemp += 1
                 elif xHeadTemp == xTailTemp - 2 and yHeadTemp == yTailTemp:
@@ -152,8 +160,12 @@ def p2(data):
     return len(seen)
 
 
-if __name__ == '__main__':
-    with open('input.txt', 'r') as f:
+if __name__ == "__main__":
+    with open("input.txt", "r") as f:
         data = [line.strip() for line in f.readlines()]
-    print(f'Part 1 : {p1(data)}')
-    print(f'Part 2 : {p2(data)}')
+    start = time.time()
+    print(f"Part 1 : {p1(data)}")
+    print(f"Time for part 1 : {time.time() - start}s")  # 3.42 ms
+    start = time.time()
+    print(f"Part 2 : {p2(data)}")
+    print(f"Time for part 2 : {time.time() - start}s")  # 38.02 ms

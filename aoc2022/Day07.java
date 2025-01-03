@@ -157,11 +157,16 @@ public class Day07 {
 
     public static void main(String[] args) throws FileNotFoundException {
         List<String> data = new ArrayList<>();
-        Scanner scanner = new Scanner(new File("aoc2022/input.txt"));
+        Scanner scanner = new Scanner(new File("input.txt"));
         while (scanner.hasNextLine()) {
             data.add(scanner.nextLine());
         }
-        System.out.println("Partie 1 : " + p1(data));
-        System.out.println("Partie 2 : " + p2(data));
+        scanner.close();
+        long start = System.nanoTime();
+        System.out.println("Part 1 : " + p1(data));
+        System.out.println("Time for part 1 : " + String.valueOf((System.nanoTime() - start)/1000000000.0) + "s"); // 9.85 ms
+        start = System.nanoTime();
+        System.out.println("Part 2 : " + p2(data));
+        System.out.println("Time for part 2 : " + String.valueOf((System.nanoTime() - start)/1000000000.0) + "s"); // 4.44 ms
     }
 }
