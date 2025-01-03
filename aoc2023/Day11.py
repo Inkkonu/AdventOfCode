@@ -1,10 +1,13 @@
+import time
+
+
 def p1(data):
     def double():
         i = 0
         l = len(data)
         while i < l:
-            if all([x == '.' for x in data[i]]):
-                data.insert(i, '.' * len(data[i]))
+            if all([x == "." for x in data[i]]):
+                data.insert(i, "." * len(data[i]))
                 i += 1
             i += 1
             l = len(data)
@@ -18,7 +21,7 @@ def p1(data):
     galaxies = []
     for x, line in enumerate(data):
         for y, row in enumerate(line):
-            if row == '#':
+            if row == "#":
                 galaxies.append((x, y))
 
     total = 0
@@ -33,7 +36,7 @@ def p2(data):
     def getEmpty():
         s = set()
         for i in range(len(data)):
-            if all([x == '.' for x in data[i]]):
+            if all([x == "." for x in data[i]]):
                 s.add(i)
         return s
 
@@ -45,7 +48,7 @@ def p2(data):
     galaxies = []
     for x, line in enumerate(data):
         for y, row in enumerate(line):
-            if row == '#':
+            if row == "#":
                 galaxies.append((x, y))
 
     total = 0
@@ -62,9 +65,13 @@ def p2(data):
 
 
 if __name__ == "__main__":
-    with open('input.txt', 'r') as f:
+    with open("input.txt", "r") as f:
         data = [line.strip() for line in f.readlines()]
-    print(f'Part 1 : {p1(data)}')
-    with open('input.txt', 'r') as f:
+    start = time.time()
+    print(f"Part 1 : {p1(data)}")
+    print(f"Time for part 1 : {time.time() - start}s")  # 10.20 ms
+    with open("input.txt", "r") as f:
         data = [line.strip() for line in f.readlines()]
-    print(f'Part 2 : {p2(data)}')
+    start = time.time()
+    print(f"Part 2 : {p2(data)}")
+    print(f"Time for part 2 : {time.time() - start}s")  # 83.91 ms

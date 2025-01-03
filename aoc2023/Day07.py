@@ -1,3 +1,4 @@
+import time
 from collections import Counter
 
 
@@ -10,7 +11,7 @@ def canBeSomething(hand, valueOrder, func):
     for i in range(len(hand)):
         if hand[i] == "J":
             for v in valueOrder[:-1]:
-                if canBeSomething(hand[0:i] + v + hand[i + 1:], valueOrder, func):
+                if canBeSomething(hand[0:i] + v + hand[i + 1 :], valueOrder, func):
                     return True
     return func(hand)
 
@@ -155,7 +156,11 @@ def p2(data):
 
 
 if __name__ == "__main__":
-    with open('input.txt', 'r') as f:
+    with open("input.txt", "r") as f:
         data = [line.strip() for line in f.readlines()]
-    print(f'Part 1 : {p1(data)}')
-    print(f'Part 2 : {p2(data)}')
+    start = time.time()
+    print(f"Part 1 : {p1(data)}")
+    print(f"Time for part 1 : {time.time() - start}s")  # 61.16 ms
+    start = time.time()
+    print(f"Part 2 : {p2(data)}")
+    print(f"Time for part 2 : {time.time() - start}s")  # 205.18 ms

@@ -1,3 +1,6 @@
+import time
+
+
 def p1(data):
     times = [int(x) for x in data[0].split()[1:]]
     distances = [int(x) for x in data[1].split()[1:]]  # Use zip()
@@ -14,8 +17,8 @@ def p1(data):
 
 
 def p2(data):
-    time = int(''.join(data[0].split()[1:]))
-    distance = int(''.join(data[1].split()[1:]))
+    time = int("".join(data[0].split()[1:]))
+    distance = int("".join(data[1].split()[1:]))
 
     total = 0
     for i in range(1, time):
@@ -26,7 +29,11 @@ def p2(data):
 
 
 if __name__ == "__main__":
-    with open('input.txt', 'r') as f:
+    with open("input.txt", "r") as f:
         data = [line.strip() for line in f.readlines()]
-    print(f'Part 1 : {p1(data)}')
-    print(f'Part 2 : {p2(data)}')
+    start = time.time()
+    print(f"Part 1 : {p1(data)}")
+    print(f"Time for part 1 : {time.time() - start}s")  # 142.10 μs
+    start = time.time()
+    print(f"Part 2 : {p2(data)}")
+    print(f"Time for part 2 : {time.time() - start}s")  # 1.80 s

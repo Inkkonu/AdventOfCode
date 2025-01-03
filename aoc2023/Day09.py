@@ -1,3 +1,6 @@
+import time
+
+
 def p1(data):
     total = 0
     for line in data:
@@ -29,7 +32,11 @@ def p2(data):
 
 
 if __name__ == "__main__":
-    with open('input.txt', 'r') as f:
+    with open("input.txt", "r") as f:
         data = [line.strip() for line in f.readlines()]
-    print(f'Part 1 : {p1(data)}')
-    print(f'Part 2 : {p2(data)}')
+    start = time.time()
+    print(f"Part 1 : {p1(data)}")
+    print(f"Time for part 1 : {time.time() - start}s")  # 2.68 ms
+    start = time.time()
+    print(f"Part 2 : {p2(data)}")
+    print(f"Time for part 2 : {time.time() - start}s")  # 2.50 ms

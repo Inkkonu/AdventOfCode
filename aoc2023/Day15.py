@@ -1,3 +1,6 @@
+import time
+
+
 def p1(data):
     total = 0
     for elem in data:
@@ -19,10 +22,12 @@ def hash(s):
     return t
 
 
-def p2(data): # I learned after submitting that dictionaries are ordered since Python 3.7
+def p2(
+    data,
+):  # I learned after submitting that dictionaries are ordered since Python 3.7
     l = [[] for _ in range(256)]
     for elem in data:
-        if elem[-1] == '-':
+        if elem[-1] == "-":
             label = elem[:-1]
             h = hash(label)
             for i in range(len(l[h])):
@@ -50,7 +55,11 @@ def p2(data): # I learned after submitting that dictionaries are ordered since P
 
 
 if __name__ == "__main__":
-    with open('input.txt', 'r') as f:
-        data = [line.strip().split(',') for line in f.readlines()][0]
-    print(f'Part 1 : {p1(data)}')
-    print(f'Part 2 : {p2(data)}')
+    with open("input.txt", "r") as f:
+        data = [line.strip().split(",") for line in f.readlines()][0]
+    start = time.time()
+    print(f"Part 1 : {p1(data)}")
+    print(f"Time for part 1 : {time.time() - start}s")  # 1.39 ms
+    start = time.time()
+    print(f"Part 2 : {p2(data)}")
+    print(f"Time for part 2 : {time.time() - start}s")  # 2.21 ms
