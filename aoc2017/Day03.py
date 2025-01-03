@@ -1,3 +1,6 @@
+import time
+
+
 def p1():
     # From https://stackoverflow.com/a/36889800
     NORTH, S, W, E = (0, 1), (0, -1), (-1, 0), (1, 0)  # directions
@@ -16,8 +19,11 @@ def p1():
             # try to turn right
             new_dx, new_dy = turn_right[dx, dy]
             new_x, new_y = x + new_dx, y + new_dy
-            if (0 <= new_x < width and 0 <= new_y < height and
-                    matrix[new_y][new_x] is None):  # can turn right
+            if (
+                0 <= new_x < width
+                and 0 <= new_y < height
+                and matrix[new_y][new_x] is None
+            ):  # can turn right
                 x, y = new_x, new_y
                 dx, dy = new_dx, new_dy
             else:  # try to move straight
@@ -51,14 +57,19 @@ def p2():
         count = 0
         while True:
             count += 1
-            matrix[y][x] = 1 if count == 1 else sum_neighbors(x, y, matrix, width, height)  # visit
-            if matrix[y][x] > 277678: #My input
+            matrix[y][x] = (
+                1 if count == 1 else sum_neighbors(x, y, matrix, width, height)
+            )  # visit
+            if matrix[y][x] > 277678:  # My input
                 return matrix[y][x]
             # try to turn right
             new_dx, new_dy = turn_right[dx, dy]
             new_x, new_y = x + new_dx, y + new_dy
-            if (0 <= new_x < width and 0 <= new_y < height and
-                    matrix[new_y][new_x] is None):  # can turn right
+            if (
+                0 <= new_x < width
+                and 0 <= new_y < height
+                and matrix[new_y][new_x] is None
+            ):  # can turn right
                 x, y = new_x, new_y
                 dx, dy = new_dx, new_dy
             else:  # try to move straight
@@ -67,17 +78,33 @@ def p2():
                     return matrix  # nowhere to go
 
     def sum_neighbors(x, y, matrix, width, height):
-        l = [(x - 1, y - 1), (x - 1, y), (x - 1, y + 1), (x, y - 1), (x, y + 1), (x + 1, y - 1), (x + 1, y),
-             (x + 1, y + 1)]
+        l = [
+            (x - 1, y - 1),
+            (x - 1, y),
+            (x - 1, y + 1),
+            (x, y - 1),
+            (x, y + 1),
+            (x + 1, y - 1),
+            (x + 1, y),
+            (x + 1, y + 1),
+        ]
         s = 0
         for e in l:
-            if width > e[0] >= 0 and height > e[1] >= 0 and matrix[e[1]][e[0]] is not None:
+            if (
+                width > e[0] >= 0
+                and height > e[1] >= 0
+                and matrix[e[1]][e[0]] is not None
+            ):
                 s += matrix[e[1]][e[0]]
         return s
 
-    return spiral(527,527)
+    return spiral(527, 527)
 
 
-if __name__ == '__main__':
-    print(f'Part 1 : {p1()}')
-    print(f'Part 2 : {p2()}')
+if __name__ == "__main__":
+    start = time.time()
+    print(f"Part 1 : {p1()}")
+    print(f"Time for part 1 : {time.time() - start}s")  # 69.26 ms
+    start = time.time()
+    print(f"Part 2 : {p2()}")
+    print(f"Time for part 2 : {time.time() - start}s")  # 1.00 ms

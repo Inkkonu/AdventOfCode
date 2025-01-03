@@ -1,3 +1,6 @@
+import time
+
+
 def p1(data):
     return sum([max(line) - min(line) for line in data])
 
@@ -13,8 +16,12 @@ def p2(data):
     return t
 
 
-if __name__ == '__main__':
-    with open('input.txt', 'r') as f:
+if __name__ == "__main__":
+    with open("input.txt", "r") as f:
         data = [[int(n) for n in line.split("\t")] for line in f.readlines()]
-    print(f'Part 1 : {p1(data)}')
-    print(f'Part 2 : {p2(data)}')
+    start = time.time()
+    print(f"Part 1 : {p1(data)}")
+    print(f"Time for part 1 : {time.time() - start}s")  # 297.78 μs
+    start = time.time()
+    print(f"Part 2 : {p2(data)}")
+    print(f"Time for part 2 : {time.time() - start}s")  # 349.76 μs
